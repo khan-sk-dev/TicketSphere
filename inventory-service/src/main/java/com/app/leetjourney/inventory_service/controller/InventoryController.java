@@ -1,12 +1,10 @@
 package com.app.leetjourney.inventory_service.controller;
 
 import com.app.leetjourney.inventory_service.response.EventInventoryResponse;
+import com.app.leetjourney.inventory_service.response.VenueInventoryResponse;
 import com.app.leetjourney.inventory_service.service.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,4 +23,10 @@ public class InventoryController {
     public @ResponseBody List<EventInventoryResponse> inventoryGetAllEvents(){
         return inventoryService.getAllEvents();
      }
+
+    public @ResponseBody VenueInventoryResponse inventoryByVenueId(@PathVariable("venueId") Long venueId){
+        return inventoryService.getVenueInformation(venueId);
+    }
+
+
 }
