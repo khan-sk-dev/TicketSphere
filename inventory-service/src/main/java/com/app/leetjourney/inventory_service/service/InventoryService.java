@@ -35,7 +35,7 @@ public class InventoryService {
     }
 
     public VenueInventoryResponse getVenueInformation(final Long venueId){
-        final Venue venue = venueRepository.findById(venueId).orElseGet(null);
+        final Venue venue = venueRepository.findById(venueId).orElse(null);
 
         return VenueInventoryResponse.builder()
                 .venueId(venue.getId())
