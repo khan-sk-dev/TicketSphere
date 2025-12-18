@@ -1,4 +1,4 @@
-package main.java.com.app.bookingservice.request;
+package com.app.bookingservice.request;
 
 import lombok.Data;
 import lombok.AllArgsConstructor;

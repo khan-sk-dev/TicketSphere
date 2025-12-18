@@ -1,21 +1,21 @@
-package com.app.bookingservice.Response;
-
-import lombok.Data;
-import lombok.NoArgsConstructor;
+package com.app.bookingservice.event;
 
 import java.math.BigDecimal;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
-public class BookingResponse {
+public class BookingEvent {
 
     private Long userId;
     private Long eventId;
     private Long ticketCount;
     private BigDecimal totalPrice;
+
 }

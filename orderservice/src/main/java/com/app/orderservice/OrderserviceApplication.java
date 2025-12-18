@@ -1,12 +1,13 @@
-package com.app.leetjourney.inventory_service;
+package com.app.orderservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class InventoryServiceApplication {
+public class OrderserviceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(InventoryServiceApplication.class, args);
+		SpringApplication.run(OrderserviceApplication.class, args);
 	}
+
 }

@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "BookingserviceApplication",
+            "request": "launch",
+            "mainClass": "com.app.bookingservice.BookingserviceApplication",
+            "projectName": "bookingservice"
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-InventoryServiceApplication<inventory-service>",
             "request": "launch",
             "cwd": "${workspaceFolder}",

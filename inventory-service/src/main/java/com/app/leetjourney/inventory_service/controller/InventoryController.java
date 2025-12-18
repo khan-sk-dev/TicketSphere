@@ -10,7 +10,7 @@ import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
-@RequestMapping("/api/v1/")
+@RequestMapping("/api/v1")
 public class InventoryController {
 
     private InventoryService inventoryService;
@@ -20,13 +20,18 @@ public class InventoryController {
         this.inventoryService = inventoryService;
     }
 
-    @GetMapping("inventory/events")
+    @GetMapping("/inventory/events")
     public @ResponseBody List<EventInventoryResponse> inventoryGetAllEvents() {
         return inventoryService.getAllEvents();
     }
 
-    @GetMapping("inventory/venue/{venueId}")
+    @GetMapping("/inventory/venue/{venueId}")
     public @ResponseBody VenueInventoryResponse inventoryByVenueId(@PathVariable("venueId") Long venueId) {
         return inventoryService.getVenueInformation(venueId);
+    }
+
+    @GetMapping("/inventory/event/{eventId}")
+    public @ResponseBody EventInventoryResponse inventoryForEvent(@PathVariable("eventId") Long eventId) {
+        return inventoryService.getEventInventory(eventId);
     }
 }

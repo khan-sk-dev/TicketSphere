@@ -1,5 +1,6 @@
 package com.app.leetjourney.inventory_service.Entity;
 
+import java.math.BigDecimal;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -12,22 +13,25 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="event")
+@Table(name = "event")
 public class Event {
 
     @Id
     private Long Id;
 
-    @Column(name="name")
+    @Column(name = "name")
     private String name;
 
-    @Column(name="total_Capacity")
+    @Column(name = "total_Capacity")
     private Long totalCapacity;
 
-    @Column(name="left_capacity")
+    @Column(name = "left_capacity")
     private Long leftCapacity;
 
+    @Column(name = "ticket_price")
+    private BigDecimal ticketPrice;
+
     @ManyToOne
-    @JoinColumn(name="venue_id")
+    @JoinColumn(name = "venue_id")
     private Venue venue;
 }
