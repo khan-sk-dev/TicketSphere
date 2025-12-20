@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "ApigatewayApplication",
+            "request": "launch",
+            "mainClass": "com.app.apigateway.ApigatewayApplication",
+            "projectName": "apigateway"
+        },
+        {
+            "type": "java",
             "name": "OrderserviceApplication",
             "request": "launch",
             "mainClass": "com.app.orderservice.OrderserviceApplication",
