@@ -1,0 +1,14 @@
+# Docker / MySQL volumes
+volume-data/
+**/volume-data/
+*.sock
+mysql_keycloak_data/
+
+# MySQL runtime files
+ib_buffer_pool
+auto.cnf
+binlog.index
+
+# OS
+.DS_Store
+Thumbs.db

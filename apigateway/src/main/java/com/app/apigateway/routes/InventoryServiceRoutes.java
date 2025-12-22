@@ -11,8 +11,13 @@ import org.springframework.web.servlet.function.ServerResponse;
 
 import static org.springframework.cloud.gateway.server.mvc.filter.FilterFunctions.setPath;
 
+import org.springframework.beans.factory.annotation.Value;
+
 @Configuration
 public class InventoryServiceRoutes {
+
+        @Value("${services.inventory.url}")
+        private String inventoryServiceUrl;
 
         @Bean
         public RouterFunction<ServerResponse> inventoryRoutes() {
@@ -21,12 +26,12 @@ public class InventoryServiceRoutes {
                                 // venue inventory
                                 .route(RequestPredicates.GET("/api/v1/inventory/venue/{venueId}"),
                                                 request -> forwardWithPathVariable(request, "venueId",
-                                                                "http://localhost:8080/api/v1/inventory/venue/"))
+                                                                inventoryServiceUrl + "/api/v1/inventory/venue/"))
 
                                 // event inventory
                                 .route(RequestPredicates.GET("/api/v1/inventory/event/{eventId}"),
                                                 request -> forwardWithPathVariable(request, "eventId",
-                                                                "http://localhost:8080/api/v1/inventory/event/"))
+                                                                inventoryServiceUrl + "/api/v1/inventory/event/"))
 
                                 .build();
         }
@@ -41,7 +46,7 @@ public class InventoryServiceRoutes {
         public RouterFunction<ServerResponse> inventoryServiceApiDocs() {
                 return GatewayRouterFunctions.route("inventory-service-api-docs")
                                 .route(RequestPredicates.path("/docs/inventoryservice/v3/api-docs"),
-                                                HandlerFunctions.http("http://localhost:8080"))
+                                                HandlerFunctions.http(inventoryServiceUrl))
                                 .filter(setPath("/v3/api-docs"))
                                 .build();
         }

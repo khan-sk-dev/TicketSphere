@@ -1,5 +1,6 @@
 package com.app.apigateway.routes;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.gateway.server.mvc.filter.CircuitBreakerFilterFunctions;
 import org.springframework.cloud.gateway.server.mvc.handler.GatewayRouterFunctions;
 import org.springframework.cloud.gateway.server.mvc.handler.HandlerFunctions;
@@ -17,32 +18,41 @@ import static org.springframework.cloud.gateway.server.mvc.filter.FilterFunction
 @Configuration
 public class BookingServiceRoutes {
 
+        @Value("${services.booking.url}")
+        private String bookingServiceUrl;
+
         @Bean
         public RouterFunction<ServerResponse> bookingRoutes() {
+                // Forward POST /api/v1/booking on gateway -> /api/v1/booking on booking service
                 return GatewayRouterFunctions.route("booking-service")
-                                .route(RequestPredicates.POST("/api/v1/booking"),
-                                                HandlerFunctions.http("http://localhost:8081/api/v1/booking"))
-                                .filter(CircuitBreakerFilterFunctions.circuitBreaker("bookingServiceCircuitBreaker",
-                                                URI.create("forward:/fallbackRoute")))
+                                .route(
+                                                RequestPredicates.POST("/api/v1/booking"),
+                                                // use the property and append path if needed
+                                                HandlerFunctions.http(bookingServiceUrl + "/api/v1/booking"))
+                                .filter(
+                                                CircuitBreakerFilterFunctions.circuitBreaker(
+                                                                "bookingServiceCircuitBreaker",
+                                                                URI.create("forward:/fallbackRoute")))
                                 .build();
         }
 
         @Bean
         public RouterFunction<ServerResponse> fallbackRoute() {
                 return GatewayRouterFunctions.route("fallbackRoute")
-                                .POST("/fallbackRoute",
-                                                request -> ServerResponse.status(HttpStatus.SERVICE_UNAVAILABLE)
-                                                                .body("Booking service is down"))
+                                .POST("/fallbackRoute", request -> ServerResponse.status(HttpStatus.SERVICE_UNAVAILABLE)
+                                                .body("Booking service is down"))
                                 .build();
         }
 
         @Bean
         public RouterFunction<ServerResponse> bookingServiceApiDocs() {
+                // IMPORTANT: use bookingServiceUrl, not "bookingServiceUrl"
                 return GatewayRouterFunctions.route("booking-service-api-docs")
-                                .route(RequestPredicates.path("/docs/bookingservice/v3/api-docs"),
-                                                HandlerFunctions.http("http://localhost:8081"))
+                                .route(
+                                                RequestPredicates.path("/docs/bookingservice/v3/api-docs"),
+                                                HandlerFunctions.http(bookingServiceUrl) // base URL of booking service
+                                )
                                 .filter(setPath("/v3/api-docs"))
                                 .build();
         }
-
 }
