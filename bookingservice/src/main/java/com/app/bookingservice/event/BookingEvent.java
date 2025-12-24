@@ -19,3 +19,11 @@ public class BookingEvent {
     private BigDecimal totalPrice;
 
 }
+
+/**
+ * Event published to Kafka when a booking is created.
+ *
+ * Downstream services (e.g., order-service) can consume this event to
+ * perform additional processing such as creating persistent orders or
+ * charging payment providers.
+ */

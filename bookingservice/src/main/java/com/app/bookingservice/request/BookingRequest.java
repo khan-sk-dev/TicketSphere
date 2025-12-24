@@ -16,3 +16,12 @@ public class BookingRequest {
     private Long ticketCount;
 
 }
+
+/**
+ * DTO representing a booking request from a client.
+ *
+ * Fields:
+ * - `userId`: identifier of the user making the booking
+ * - `eventId`: identifier of the event to book
+ * - `ticketCount`: number of tickets requested
+ */

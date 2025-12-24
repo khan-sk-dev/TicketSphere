@@ -20,3 +20,7 @@ public class EventInventoryResponse {
     private Venue venue;
     private BigDecimal ticketPrice;
 }
+
+/**
+ * DTO containing event-level inventory information used by clients.
+ */

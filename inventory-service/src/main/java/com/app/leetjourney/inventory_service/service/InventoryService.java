@@ -70,3 +70,11 @@ public class InventoryService {
 
     }
 }
+
+/**
+ * Service layer for inventory operations.
+ *
+ * Responsibilities include retrieving event/venue data and updating
+ * remaining capacities. Responses are converted to DTOs used by controllers
+ * and other services.
+ */

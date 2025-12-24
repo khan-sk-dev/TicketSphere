@@ -11,3 +11,11 @@ public class OrderserviceApplication {
 	}
 
 }
+
+/**
+ * Order Service application bootstrap.
+ *
+ * Starts the Spring application responsible for consuming booking events and
+ * creating persistent orders, then delegating inventory updates to the
+ * Inventory Service.
+ */

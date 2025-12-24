@@ -23,3 +23,10 @@ public class Customer {
     private String address;
 
 }
+
+/**
+ * JPA entity representing a Customer in the booking service database.
+ *
+ * Fields map to columns in the `customer` table. This simple entity is used
+ * to look up user information during booking processing.
+ */

@@ -17,3 +17,7 @@ public class VenueResponse {
     private Long totalCapacity;
 
 }
+
+/**
+ * DTO representation of a venue used in inventory responses.
+ */

@@ -9,3 +9,7 @@ import com.app.orderservice.entity.Order;
 public interface OrderRepository extends JpaRepository<Order, Long> {
 
 }
+
+/**
+ * Spring Data repository for persisting `Order` entities.
+ */

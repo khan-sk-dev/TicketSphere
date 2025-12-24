@@ -15,3 +15,7 @@ public class VenueInventoryResponse {
     private String venueName;
     private Long totalCapacty;
 }
+
+/**
+ * DTO returned by the Inventory Service representing venue-level data.
+ */

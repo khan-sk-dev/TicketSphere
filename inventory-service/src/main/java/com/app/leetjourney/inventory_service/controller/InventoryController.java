@@ -46,3 +46,16 @@ public class InventoryController {
         // return ResponseEntity.ok().build();
     }
 }
+
+/**
+ * REST controller exposing inventory endpoints.
+ *
+ * Routes provided:
+ * - GET `/inventory/events` : list all events with capacity
+ * - GET `/inventory/venue/{venueId}` : information about a specific venue
+ * - GET `/inventory/event/{eventId}` : inventory for a specific event
+ * - PUT `/inventory/event/{eventId}/capacity/{capacity}` : update remaining
+ * capacity
+ *
+ * The controller delegates business operations to `InventoryService`.
+ */

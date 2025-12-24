@@ -51,4 +51,28 @@ public class InventoryServiceRoutes {
                                 .build();
         }
 
+        @Bean
+        public RouterFunction<ServerResponse> inventoryServiceSwaggerUi() {
+                return GatewayRouterFunctions.route("inventory-service-api-docs")
+                                .route(RequestPredicates.path("/docs/inventoryservice/v3/api-docs"),
+                                                HandlerFunctions.http(inventoryServiceUrl))
+                                .filter(setPath("/v3/api-docs"))
+                                .build();
+        }
+
 }
+
+/**
+ * Functional route definitions for forwarding inventory-related requests to
+ * the downstream inventory service.
+ *
+ * This class exposes:
+ * - routes that forward GET requests for venue and event inventory to the
+ *   inventory service by extracting the path variables and performing an HTTP
+ *   forward to the configured service URL.
+ * - routes that proxy the downstream inventory service OpenAPI JSON so the
+ *   gateway can expose the docs at `/docs/inventoryservice/v3/api-docs`.
+ *
+ * The `forwardWithPathVariable` helper extracts the variable from the
+ * incoming request and forwards to the target service path.
+ */

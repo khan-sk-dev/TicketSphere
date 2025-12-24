@@ -52,3 +52,15 @@ public class OrderService {
     }
 
 }
+
+/**
+ * Service that listens for booking events on Kafka and creates orders.
+ *
+ * Responsibilities:
+ * - Consume `BookingEvent` messages and persist corresponding `Order`
+ * - Call the Inventory Service to decrement capacity for the event
+ *
+ * Notes:
+ * - Kafka consumer configuration (topics, groupId) is wired by the
+ * `@KafkaListener` annotation.
+ */

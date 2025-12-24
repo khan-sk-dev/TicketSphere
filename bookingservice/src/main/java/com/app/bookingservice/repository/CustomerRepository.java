@@ -9,3 +9,9 @@ import com.app.bookingservice.entity.Customer;
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
 }
+
+/**
+ * Spring Data JPA repository for `Customer` entities.
+ *
+ * Provides standard CRUD and paging operations via `JpaRepository`.
+ */

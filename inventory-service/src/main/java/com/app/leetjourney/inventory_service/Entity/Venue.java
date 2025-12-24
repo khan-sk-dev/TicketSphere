@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 public class Venue {
 
     @Id
-    @Column(name="id")
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "name")
@@ -30,3 +30,10 @@ public class Venue {
     @Column(name = "total_capacity")
     private Long totalCapacity;
 }
+
+/**
+ * JPA entity for venue information.
+ *
+ * Note: This class currently also has a `@Service` annotation which is
+ * unconventional for an entity; consider removing `@Service` if not required.
+ */

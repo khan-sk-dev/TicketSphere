@@ -72,3 +72,17 @@ public class BookingService {
 
     }
 }
+
+/**
+ * Service layer that implements booking business logic.
+ *
+ * Responsibilities:
+ * - Validate the user exists (via `CustomerRepository`).
+ * - Query inventory availability from `InventoryServiceClient`.
+ * - Create a `BookingEvent` and publish it to Kafka for downstream
+ * processing (e.g., order service).
+ *
+ * Note: The method throws generic RuntimeExceptions in this simplified sample;
+ * a production service should use specific exception types and proper error
+ * handling.
+ */

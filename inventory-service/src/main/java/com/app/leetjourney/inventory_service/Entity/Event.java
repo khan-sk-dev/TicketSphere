@@ -35,3 +35,10 @@ public class Event {
     @JoinColumn(name = "venue_id")
     private Venue venue;
 }
+
+/**
+ * JPA entity representing an Event stored in the inventory database.
+ *
+ * Fields include total and remaining capacity as well as the ticket price
+ * and a reference to the `Venue` entity.
+ */

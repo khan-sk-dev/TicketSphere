@@ -26,3 +26,11 @@ public class BookingController {
         return bookingService.createBooking(bookingRequest);
     }
 }
+
+/**
+ * REST controller that exposes booking operations.
+ *
+ * The controller provides a single endpoint to create a booking in this
+ * simplified example. It delegates business logic to `BookingService` and
+ * returns a `BookingResponse` DTO.
+ */

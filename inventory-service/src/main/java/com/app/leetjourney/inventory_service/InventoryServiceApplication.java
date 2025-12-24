@@ -10,3 +10,10 @@ public class InventoryServiceApplication {
 		SpringApplication.run(InventoryServiceApplication.class, args);
 	}
 }
+
+/**
+ * Inventory Service bootstrap class.
+ *
+ * Starts the Spring application that provides inventory queries and updates
+ * for events and venues.
+ */

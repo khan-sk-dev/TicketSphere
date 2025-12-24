@@ -20,3 +20,11 @@ public class InventoryServiceClient {
     }
 
 }
+
+/**
+ * Small HTTP client used by the Order Service to tell the Inventory Service
+ * to decrement capacity after an order is created.
+ *
+ * This client uses `RestTemplate` for simplicity; consider adding error
+ * handling and retries for robustness.
+ */

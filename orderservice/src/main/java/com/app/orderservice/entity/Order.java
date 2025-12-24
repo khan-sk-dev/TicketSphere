@@ -44,3 +44,10 @@ public class Order {
     @Column(name = "event_id")
     private Long eventId;
 }
+
+/**
+ * JPA entity representing an order stored in the orders database.
+ *
+ * Fields include the total price, ticket quantity and references to the
+ * customer and event involved in the order.
+ */

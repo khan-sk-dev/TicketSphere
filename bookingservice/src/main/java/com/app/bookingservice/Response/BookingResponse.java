@@ -19,3 +19,10 @@ public class BookingResponse {
     private Long ticketCount;
     private BigDecimal totalPrice;
 }
+
+/**
+ * DTO returned by the Booking API after a successful booking.
+ *
+ * Contains the basic booking summary including `userId`, `eventId`, number of
+ * tickets and the `totalPrice` for the booking.
+ */

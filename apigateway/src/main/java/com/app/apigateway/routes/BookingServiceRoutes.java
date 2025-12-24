@@ -55,4 +55,31 @@ public class BookingServiceRoutes {
                                 .filter(setPath("/v3/api-docs"))
                                 .build();
         }
+
+        @Bean
+        public RouterFunction<ServerResponse> bookingServiceSwaggerUi() {
+                return GatewayRouterFunctions.route("booking-service-Api-docs")
+                                .route(
+                                                RequestPredicates.path("/docs/bookingservice/v3/api-docs"),
+                                                HandlerFunctions.http(bookingServiceUrl) // base URL of booking service
+                                )
+                                .filter(setPath("/v3/api-docs"))
+                                .build();
+        }
 }
+
+/**
+ * Functional route definitions used by the API gateway to forward requests to
+ * the booking service.
+ *
+ * This class defines:
+ * - a route that forwards POST booking requests to the booking service and
+ *   wraps the call with a Resilience4j circuit breaker that forwards to a
+ *   local fallback when the service is unavailable.
+ * - helper routes that proxy the downstream booking service OpenAPI JSON
+ *   so the gateway can expose the docs under `/docs/bookingservice/v3/api-docs`.
+ *
+ * The routing uses `GatewayRouterFunctions` and `HandlerFunctions.http(...)`
+ * which cause the gateway to act as a simple HTTP forwarder to the downstream
+ * service base URL configured in `services.booking.url`.
+ */

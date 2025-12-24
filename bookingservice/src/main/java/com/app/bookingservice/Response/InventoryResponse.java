@@ -20,3 +20,8 @@ public class InventoryResponse {
     private BigDecimal ticketPrice;
 
 }
+
+/**
+ * DTO that mirrors the inventory service response used by the booking
+ * service to decide availability and pricing.
+ */

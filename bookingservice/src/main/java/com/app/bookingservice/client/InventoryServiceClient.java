@@ -20,3 +20,12 @@ public class InventoryServiceClient {
     }
 
 }
+
+/**
+ * Lightweight HTTP client used by the Booking Service to query the inventory
+ * service for availability and pricing.
+ *
+ * This client uses a plain `RestTemplate` for simplicity. In production you
+ * may want to use a reactive HTTP client or a declarative client (e.g.,
+ * OpenFeign) with retries, timeouts and error handling.
+ */
